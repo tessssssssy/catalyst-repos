@@ -18,15 +18,58 @@ const RepoList = ({filter, sortOption}) => {
             console.error(err.message)
         }
     }
+
     useEffect(() => {
         getRepos();
     }, [])
+
+    const filterRepos = (repos) => {
+        if (filter === 'forked') {
+            return repos.filter(repo => repo.fork)
+        } else if (filter === 'not-forked') {
+            return repos.filter(repo => !repo.fork)
+        } else {
+            return repos;
+        }
+    }
+    //Comparer Function    
+    const GetSortOrder = (prop) => {    
+        return (a, b) => {    
+            if (a[prop] > b[prop]) {    
+                return 1;    
+            } else if (a[prop] < b[prop]) {    
+                return -1;    
+            }    
+            return 0;    
+        }    
+    }    
+    const sortRepos = (repos) => {
+        if (sortOption === 'created-time') {
+            let sortedRepos = repos.sort(GetSortOrder("created_at"))
+            console.log(sortedRepos)
+            return sortedRepos
+        } else if (sortOption === 'updated-time') {
+            let sortedRepos = repos.sort(GetSortOrder("updated_at"))
+            console.log(sortedRepos)
+            return sortedRepos
+        } else {
+            let sortedRepos = repos.sort(GetSortOrder("name"))
+            console.log(sortedRepos)
+            return sortedRepos
+        }
+    }
+
+    const renderRepos = (repos) => {
+        let filteredRepos = filterRepos(repos)
+        let sortedRepos = sortRepos(filteredRepos)
+        console.log(sortedRepos)
+        return sortedRepos.map((repo) => {
+            return <p>{repo.name}</p>
+        })
+    }
+
     return (<>
-        {repos.map(repo => {
-            // should render a repo component
-            // expand on mobile/ open modal on desktop
-            return (<p>{repo.name}</p>)
-        }) }
+    {renderRepos(repos)}
     </>)
 }
 

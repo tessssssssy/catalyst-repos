@@ -5,7 +5,8 @@ import RepoList from './RepoList';
 
 const Home = () => {
     const [filter, setFilter] = useState('all')
-    const [sortOption, setSortOption] = useState('created-time')
+    const [sortOption, setSortOption] = useState('name')
+
     // dashboard with filters and repo list
     // call the repos api and filter them based on state - toggle forked, sort options etc
     return (
