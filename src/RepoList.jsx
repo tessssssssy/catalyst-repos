@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 
-const RepoList = () => {
+const RepoList = ({filter, sortOption}) => {
+    console.log(filter)
+    console.log(sortOption)
     const [repos, setRepos] = useState([])
 
     const getRepos = async () => {
