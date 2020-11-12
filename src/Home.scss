@@ -1,0 +1,27 @@
+.home {
+    position: relative; 
+    bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    .home-options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+        .select-container {
+            text-align: left;
+            .select {
+                width: 400px;
+                max-width: 90vw;
+                background-color: white;
+                text-align: center;
+            }
+            p {
+                margin: 5px;
+            }
+        }
+        
+    }
+}
+
