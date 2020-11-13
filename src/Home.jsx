@@ -11,10 +11,12 @@ const Home = () => {
     // dashboard with filters and repo list
     // call the repos api and filter them based on state - toggle forked, sort options etc
     return (
+        <div className="main">
         <div className="home">
-            <div className="home-options">
-            <div className="select-container">
-            <p>Show: </p>
+        <div className="home-options">
+
+        <div className="select-container">
+            <label>Show: </label>
             <Select
             className="select"
             labelId="demo-simple-select-label"
@@ -28,8 +30,9 @@ const Home = () => {
           <MenuItem value={'all'}>All</MenuItem>
         </Select>
         </div>
+
         <div className="select-container">
-        <p>Sort by: </p>
+        <label>Sort by: </label>
         <Select
             className="select"
             labelId="demo-simple-select-label"
@@ -42,8 +45,11 @@ const Home = () => {
           <MenuItem value={'name'}>Name</MenuItem>
         </Select>
         </div>
+
         </div>    
+
             <RepoList sortOption={sortOption} filter={filter}/>
+        </div>
         </div>
     )
 }
