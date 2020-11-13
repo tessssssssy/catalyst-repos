@@ -1,28 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import Repo from './Repo';
+import API_KEY from './api';
 import './RepoList.scss';
 
 const RepoList = ({filter, sortOption}) => {
-    console.log(filter)
-    console.log(sortOption)
+    const [page, setPage] = useState(1); // increment on scroll and then call api again until result == []
     const [repos, setRepos] = useState([])
 
     const getRepos = async () => {
-        // call api
-        // save data to state
         try {
-            const response = await fetch("https://api.github.com/orgs/catalyst/repos");
+            const response = await fetch(`https://api.github.com/orgs/catalyst/repos?page=${page}`, {
+                headers: {
+                    Authorization: `token  350a17f9ce560b92fa12d89a0bcf3dde2a1c3bc5`
+                }
+            });
             const data = await response.json();
-            setRepos(data);
-            console.log(data);
+            setRepos([...repos, ...data]);
         } catch (err) {
             console.error(err.message)
         }
     }
 
+    const handleScroll = () => {
+        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+        const body = document.body;
+        const html = document.documentElement;
+        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight) - 100;
+        console.log(docHeight)
+        const windowBottom = windowHeight + window.pageYOffset;
+        console.log(windowBottom)
+        if (windowBottom >= docHeight) {
+          console.log('bottom reached');
+          if (page < 12) {
+            setPage(page + 1);
+          }
+          
+        } else {
+          console.log('not at bottom');
+        }
+      }
+
     useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
         getRepos();
-    }, [])
+    }, [page])
 
     const filterRepos = (repos) => {
         if (filter === 'forked') {
@@ -64,9 +85,9 @@ const RepoList = ({filter, sortOption}) => {
         let filteredRepos = filterRepos(repos)
         let sortedRepos = sortRepos(filteredRepos)
         console.log(sortedRepos)
-        return sortedRepos.map((repo) => {
+        return sortedRepos.map((repo, index) => {
             return (
-                <Repo  contribtorsUrl={repo.contributors_url} name={repo.name} description={repo.description}/>
+                <Repo  key={index} contributorsUrl={repo.contributors_url} name={repo.name} description={repo.description}/>
             )
         })
     }
