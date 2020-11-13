@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Repo from './Repo';
 import './RepoList.scss';
 
 const RepoList = ({filter, sortOption}) => {
@@ -65,10 +66,7 @@ const RepoList = ({filter, sortOption}) => {
         console.log(sortedRepos)
         return sortedRepos.map((repo) => {
             return (
-                <div className="card">
-                    <p>{repo.name}</p>
-                    <p>{repo.description}</p>
-                </div>
+                <Repo  contribtorsUrl={repo.contributors_url} name={repo.name} description={repo.description}/>
             )
         })
     }
