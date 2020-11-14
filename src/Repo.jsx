@@ -17,7 +17,6 @@ const Repo = ({props}) => {
   const [open, setOpen] = useState(false);
   const [contributors, setContributors] = useState([]);
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const getContributors = async () => {
       try {
@@ -71,7 +70,6 @@ const Repo = ({props}) => {
         </div>
       </div>
       <Dialog
-        fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
@@ -79,7 +77,7 @@ const Repo = ({props}) => {
         {/* <DialogTitle id="responsive-dialog-title">{props.name}</DialogTitle> */}
         {/* <DialogContent> */}
           {/* <DialogContentText> */}
-          <div className="modal-content" style={{margin: "20px", border: "none"}}>
+          <div className="modal-content" style={{margin: "20px", border: "none", width: '90%', minWidth: "350px"}}>
           <h2 style={{marginBottom: "40px"}}>{props.name}</h2>
           <p style={{fontWeight: "bold"}} >Description</p>
           <p style={{marginBottom: "40px"}}>{props.description}</p>
@@ -91,8 +89,8 @@ const Repo = ({props}) => {
           <div style={{display: "flex", flexWrap: "wrap"}}>
           {contributors.map(contributor => {
                 return (
-                  <div className="contributor">
-                    <img style={{width: "30px", display: "block"}} src={contributor.avatar_url}/>
+                  <div className="contributor" style={{margin: "10px"}}>
+                    <img style={{width: "50px", display: "block"}} src={contributor.avatar_url} alt="profile photo"/>
                     <a href={contributor.html_url} target="_blank">{contributor.login}</a>
                   </div>
                 )

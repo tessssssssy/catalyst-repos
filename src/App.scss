@@ -2,8 +2,13 @@
 
 .App {
     text-align: center;
-    background-color: lightgray;
+    background-color: #E8EAED;
     width: 100vw;
+    .main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     // display: flex;
     // flex-direction: column;
     // align-items: center;

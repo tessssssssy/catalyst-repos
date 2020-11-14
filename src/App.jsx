@@ -10,10 +10,12 @@ function App() {
   return (
     <div className="App">
       <Header/>
+      <div className="main">
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route exact path="/about" component={About}/>
       </Switch>
+      </div>
     </div>
   );
 }

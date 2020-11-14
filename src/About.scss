@@ -1,0 +1,28 @@
+
+.about-container {
+    background-color: white;
+    padding: 50px;
+    box-shadow: 4px 2px 17px -6px rgba(0,0,0,0.74);
+    -webkit-box-shadow: 4px 2px 17px -6px rgba(0,0,0,0.74);
+    -moz-box-shadow: 4px 2px 17px -6px rgba(0,0,0,0.74);
+    width: 90%;
+    max-width: 900px;
+    position: relative; 
+    bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    .about-item {
+        margin-top: 20px;
+        img {
+            width: 80px;
+        }
+        a {
+            color: black;
+            font-size: 14pt;
+            margin-right: 20px;
+        }
+    }
+    
+}

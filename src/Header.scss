@@ -1,15 +1,21 @@
-
+.navbar {
+    z-index: 10;
+    background-color: #303030;
+    position: absolute;
+}
 
 .triangle {
     width: 0px;
     height: 0px;
-    border-left: 100vw solid grey;
+    border-left: 100vw solid #303030;
     border-top: 0px solid transparent;
     // border-right: 30vw solid transparent;
     border-bottom: 300px solid transparent;
     position: relative;
     z-index: 2;
+    // opacity: 70%;
 }
+
 .heading {
     position: absolute;
     top: 80px;
@@ -19,16 +25,16 @@
     color: white;
     h1 {
         font-size: 48pt;
+        font-weight: bolder;
     }
 }
-
 .triangle-left {
     width: 0px;
     height: 0px;
     border-left: 20vw solid transparent;
     border-top: 0px solid transparent;
-    border-right: 80vw solid brown;
-    border-bottom: 200px solid transparent;
+    border-right: 90vw solid  #960619;
+    border-bottom: 300px solid transparent;
     position: relative;
     bottom: 300px;
     z-index: 1;

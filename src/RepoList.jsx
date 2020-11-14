@@ -95,7 +95,6 @@ const RepoList = ({filter, sortOption}) => {
             )
         })
     }
-
     return (<div className="repos-list">
     {renderRepos(repos)}
     </div>)
