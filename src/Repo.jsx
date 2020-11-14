@@ -56,6 +56,7 @@ const Repo = ({props}) => {
           <h4>{props.name}</h4>
           <p>{props.description}</p>
         </div>
+
         <div className="card-bottom">
           <div className="stars-watchers">
             <p>Stargazers: {props.stargazers_count}</p>
@@ -66,6 +67,7 @@ const Repo = ({props}) => {
             <i  class="fas fa-plus-circle"></i>
             </button>
           </div>
+
         </div>
       </div>
       <Dialog
@@ -74,17 +76,33 @@ const Repo = ({props}) => {
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
-        <DialogTitle id="responsive-dialog-title">{props.name}</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-          {props.description}
-            {contributors.map(contributor => {
-                return <a href={contributor.html_url} target="_blank">{contributor.login}</a>
+        {/* <DialogTitle id="responsive-dialog-title">{props.name}</DialogTitle> */}
+        {/* <DialogContent> */}
+          {/* <DialogContentText> */}
+          <div className="modal-content" style={{margin: "20px", border: "none"}}>
+          <h2 style={{marginBottom: "40px"}}>{props.name}</h2>
+          <p style={{fontWeight: "bold"}} >Description</p>
+          <p style={{marginBottom: "40px"}}>{props.description}</p>
+          <p>Created: {props.created_at}</p>
+          <p>Updated: {props.updated_at}</p>
+          <p>Stargazers: {props.stargazers_count}</p>
+            <p style={{marginBottom: "40px"}}>Watchers: {props.watchers_count}</p>
+            <p style={{fontWeight: "bold"}}>Contributors</p>
+          <div style={{display: "flex", flexWrap: "wrap"}}>
+          {contributors.map(contributor => {
+                return (
+                  <div className="contributor">
+                    <img style={{width: "30px", display: "block"}} src={contributor.avatar_url}/>
+                    <a href={contributor.html_url} target="_blank">{contributor.login}</a>
+                  </div>
+                )
             })}
-          </DialogContentText>
-        </DialogContent>
+          </div> 
+          </div>
+          {/* </DialogContentText> */}
+        {/* </DialogContent> */}
         <DialogActions>
-        <a href={props.html_url}>
+        <a href={props.html_url} target="_blank">
             Github
           </a>
           <Button onClick={handleClose} color="primary" autoFocus>
