@@ -11,9 +11,9 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import './RepoList.scss';
+import './Repo.scss';
 
-const Repo = ({name, description, contributorsUrl }) => {
+const Repo = ({props}) => {
   const [open, setOpen] = useState(false);
   const [contributors, setContributors] = useState([]);
   const theme = useTheme();
@@ -21,7 +21,7 @@ const Repo = ({name, description, contributorsUrl }) => {
 
   const getContributors = async () => {
       try {
-        const response = await fetch(contributorsUrl, {
+        const response = await fetch(props.contributors_url, {
             headers: {
                 Authorization: `token  350a17f9ce560b92fa12d89a0bcf3dde2a1c3bc5`
             }
@@ -44,15 +44,29 @@ const Repo = ({name, description, contributorsUrl }) => {
   };
 
   useEffect(() => {
-    console.log(name)
+    console.log(props.name)
     // getContributors();
 }, [])
+
   return (
     <div className="card">
-      <div>
-        <p>{name}</p>
-        <p>{description}</p>
-        <Button onClick={handleClickOpen}>+</Button>
+      <div className="card-content">
+
+        <div class="card-top">
+          <h4>{props.name}</h4>
+          <p>{props.description}</p>
+        </div>
+        <div className="card-bottom">
+          <div className="stars-watchers">
+            <p>Stargazers: {props.stargazers_count}</p>
+            <p>Watchers: {props.watchers_count}</p>
+          </div>
+          <div className="button-container">
+            <button onClick={handleClickOpen}> 
+            <i  class="fas fa-plus-circle"></i>
+            </button>
+          </div>
+        </div>
       </div>
       <Dialog
         fullScreen={fullScreen}
@@ -60,21 +74,19 @@ const Repo = ({name, description, contributorsUrl }) => {
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
-        <DialogTitle id="responsive-dialog-title">{name}</DialogTitle>
+        <DialogTitle id="responsive-dialog-title">{props.name}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            {description}
-          </DialogContentText>
-          {/* <DialogContentText>
+          {props.description}
             {contributors.map(contributor => {
                 return <a href={contributor.html_url} target="_blank">{contributor.login}</a>
             })}
-          </DialogContentText> */}
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
-        <Button onClick={handleClose} color="primary" autoFocus>
-            View
-          </Button>
+        <a href={props.html_url}>
+            Github
+          </a>
           <Button onClick={handleClose} color="primary" autoFocus>
             Close
           </Button>

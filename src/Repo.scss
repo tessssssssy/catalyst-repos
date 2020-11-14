@@ -1,0 +1,56 @@
+.card {
+    background-color: white;
+    margin-bottom: 20px;
+    width: 90%;
+    text-align:left;
+    padding: 10px;
+    height: 200px;
+    overflow: hidden;
+    box-shadow: 4px 2px 17px -6px rgba(0,0,0,0.74);
+    -webkit-box-shadow: 4px 2px 17px -6px rgba(0,0,0,0.74);
+    -moz-box-shadow: 4px 2px 17px -6px rgba(0,0,0,0.74);
+    .card-content {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        .stars-watchers {
+            display: flex;
+            p {
+                margin-right: 10px;
+                font-weight: bold;
+            }
+        }
+        .button-container {
+            text-align: right;
+            button {
+                background-color: transparent;
+                border: none;
+                i {
+                    font-size: 18pt;
+                }
+            }
+        }      
+    }
+}
+
+@media (max-width: 600px) {
+    .card-bottom {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 601px) {
+        .card {
+            width: 45%;
+            height: 300px;
+        }
+}
+
+@media (min-width: 901px) {
+        .card {
+            width: 30%;
+            // margin: 20px;
+        }
+}
