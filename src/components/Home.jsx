@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Select, MenuItem } from "@material-ui/core";
+import { Select, MenuItem, Switch } from "@material-ui/core";
 import RepoList from "./RepoList";
 import "../stylesheets/Home.scss";
 
 const Home = () => {
   const [filter, setFilter] = useState("all");
   const [sortOption, setSortOption] = useState("created-at");
+  const [sortDescending, setSortDescending] = useState(false);
+
   return (
     <div className="main">
       <div className="home">
@@ -38,10 +40,16 @@ const Home = () => {
               <MenuItem value={"updated-at"}>Updated Time</MenuItem>
               <MenuItem value={"name"}>Name</MenuItem>
             </Select>
+            <label>{sortDescending ? 'Descending' : 'Ascending'}</label>
+            <Switch
+              onChange={(evt) => setSortDescending(!sortDescending)}
+              color="default"
+              inputProps={{ "aria-label": "checkbox with default color" }}
+            />
           </div>
         </div>
 
-        <RepoList sortOption={sortOption} filter={filter} />
+        <RepoList sortDescending={sortDescending} sortOption={sortOption} filter={filter} />
       </div>
     </div>
   );

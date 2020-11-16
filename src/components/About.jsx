@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import "../stylesheets/About.scss";
 
 const About = () => {
-  // page about Catalyst IT
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
       const response = await fetch("https://api.github.com/orgs/catalyst");
       const data = await response.json();
       setData(data);
-      console.log(data);
     } catch (err) {
       console.error(err.message);
     }

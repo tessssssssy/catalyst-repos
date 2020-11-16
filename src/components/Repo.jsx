@@ -12,14 +12,9 @@ const Repo = ({ props }) => {
 
   const getContributors = async () => {
     try {
-      const response = await fetch(props.contributors_url, {
-        headers: {
-          Authorization: `token  350a17f9ce560b92fa12d89a0bcf3dde2a1c3bc5`,
-        },
-      });
+      const response = await fetch(props.contributors_url);
       const contributors = await response.json();
       setContributors(contributors);
-      console.log(contributors);
     } catch (err) {
       console.error(err.message);
     }
