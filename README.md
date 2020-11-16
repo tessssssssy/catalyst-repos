@@ -30,3 +30,12 @@ About - Desktop
 Mobile
 
 !['home mobile'](./images/home_mobile.png) | !['about mobile'](./images/about_mobile.png)
+
+## Cross Browser Testing
+
+Tested on :
+- Chrome
+- Firefox
+- Safari
+- Edge
+

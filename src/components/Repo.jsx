@@ -63,18 +63,28 @@ const Repo = ({ props }) => {
             minWidth: "350px",
           }}
         >
-          <h2 style={{ marginBottom: "40px" }}>{props.name}</h2>
+          <h2 style={{ marginBottom: "20px" }}>{props.name}</h2>
           <p style={{ fontWeight: "bold" }}>Description</p>
-          <p style={{ marginBottom: "40px" }}>{props.description}</p>
+          <p style={{ marginBottom: "20px" }}>{props.description}</p>
           <p>Created: {props.created_at}</p>
           <p>Updated: {props.updated_at}</p>
+          <p>Fork: {props.fork ? 'Yes' : 'No'}</p>
+          <div style={{display: "flex"}}>
           <p>Stargazers: {props.stargazers_count}</p>
-          <p style={{ marginBottom: "40px" }}>
+          <p style={{ marginLeft: "10px" }}>
             Watchers: {props.watchers_count}
           </p>
-          <p style={{ fontWeight: "bold" }}>Contributors</p>
+          </div>
+          <p>
+            Language: {props.language}
+          </p>
+          {props.license && <p>
+            License: {props.license.name}
+          </p>}
+          <p style={{ fontWeight: "bold", marginTop: "20px" }}>Top Contributors</p>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
-            {contributors.map((contributor) => {
+            
+            {contributors.filter((c, i) => i < 5 ).map((contributor) => {
               return (
                 <div className="contributor" style={{ margin: "10px" }}>
                   <img
@@ -91,9 +101,11 @@ const Repo = ({ props }) => {
           </div>
         </div>
         <DialogActions>
+          <Button>
           <a href={props.html_url} target="_blank">
             Github
           </a>
+          </Button>
           <Button onClick={handleClose} color="primary" autoFocus>
             Close
           </Button>

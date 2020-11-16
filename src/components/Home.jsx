@@ -6,7 +6,7 @@ import "../stylesheets/Home.scss";
 const Home = () => {
   const [filter, setFilter] = useState("all");
   const [sortOption, setSortOption] = useState("created-at");
-  const [sortDescending, setSortDescending] = useState(false);
+  const [sortDescending, setSortDescending] = useState(true);
 
   return (
     <div className="main">

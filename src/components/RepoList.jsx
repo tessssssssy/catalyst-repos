@@ -81,11 +81,12 @@ const RepoList = ({ filter, sortOption, sortDescending }) => {
   };
 
   const renderRepos = (repos) => {
+
     let filteredRepos = filterRepos(repos);
     let sortedRepos = sortRepos(filteredRepos);
-    console.log(sortDescending);
     if (sortDescending) {
       sortedRepos = sortedRepos.reverse();
+      console.log(sortedRepos);
     }
     return sortedRepos.map((repo, index) => {
       return <Repo key={index} props={repo} />;
