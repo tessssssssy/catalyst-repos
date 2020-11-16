@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
-import './Header.scss';
+import '../stylesheets/Header.scss';
 
 const Header = () => { 
     return (

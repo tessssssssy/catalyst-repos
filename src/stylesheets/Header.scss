@@ -2,6 +2,7 @@
     z-index: 10;
     background-color: #303030;
     position: absolute;
+    // background: linear-gradient(90deg, rgba(33,31,31,1) 0%, rgba(48,48,48,1) 66%);
 }
 
 .triangle {
@@ -23,9 +24,11 @@
     z-index: 3;
     text-align: left;
     color: white;
+    margin-left: 50px;
     h1 {
         font-size: 48pt;
         font-weight: bolder;
+        margin-bottom: 20px;
     }
 }
 .triangle-left {
@@ -33,7 +36,7 @@
     height: 0px;
     border-left: 20vw solid transparent;
     border-top: 0px solid transparent;
-    border-right: 90vw solid  #960619;
+    border-right: 90vw solid  #E8EAED;
     border-bottom: 300px solid transparent;
     position: relative;
     bottom: 300px;
