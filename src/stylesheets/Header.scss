@@ -20,7 +20,7 @@
 .heading {
     position: absolute;
     top: 80px;
-    left: 80px;
+    left: 50px;
     z-index: 3;
     text-align: left;
     color: white;
@@ -30,6 +30,7 @@
         font-weight: bolder;
         margin-bottom: 20px;
     }
+
 }
 .triangle-left {
     width: 0px;
@@ -43,3 +44,12 @@
     z-index: 1;
     
 }
+
+@media (max-width: 600px) {
+    .heading {
+        h1 {
+            font-size: 36pt;
+        }
+    }
+}
+

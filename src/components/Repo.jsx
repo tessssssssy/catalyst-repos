@@ -32,8 +32,8 @@ const Repo = ({ props }) => {
   return (
     <div className="card">
       <div className="card-content">
-        <div class="card-top">
-          <h4>{props.name}</h4>
+        <div className="card-top">
+          <h1>{props.name}</h1>
           <p>{props.description}</p>
         </div>
 
@@ -43,8 +43,8 @@ const Repo = ({ props }) => {
             <p>Watchers: {props.watchers_count}</p>
           </div>
           <div className="button-container">
-            <button onClick={handleClickOpen}>
-              <i class="fas fa-plus-circle"></i>
+            <button onClick={handleClickOpen} aria-label="open dialog">
+              <i className="fas fa-plus-circle" aria-hidden="true" title="open dialog"></i>
             </button>
           </div>
         </div>

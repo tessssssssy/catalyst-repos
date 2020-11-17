@@ -15,6 +15,9 @@
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
+        h1 {
+            font-size: 20pt;
+        }
         .stars-watchers {
             display: flex;
             p {
@@ -31,7 +34,10 @@
                     font-size: 18pt;
                 }
                 i:hover {
-                    color: #E8EAED;
+                    color: #0BBAA6;
+                }
+                span {
+                    display: none;
                 }
             }
         }      

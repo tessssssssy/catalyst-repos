@@ -16,8 +16,7 @@ const Home = () => {
             <label>Show: </label>
             <Select
               className="select"
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
+              labelid="select-filter"  
               value={filter}
               onChange={(evt) => setFilter(evt.target.value)}
             >
@@ -28,11 +27,10 @@ const Home = () => {
           </div>
 
           <div className="select-container">
-            <label>Sort by: </label>
+            <label id="select-sort-option">Sort by: </label>
             <Select
               className="select"
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
+              labelid="select-sort-option"
               value={sortOption}
               onChange={(evt) => setSortOption(evt.target.value)}
             >
@@ -40,15 +38,14 @@ const Home = () => {
               <MenuItem value={"updated-at"}>Updated Time</MenuItem>
               <MenuItem value={"name"}>Name</MenuItem>
             </Select>
-            <label>{sortDescending ? 'Descending' : 'Ascending'}</label>
+            <label id="toggle-descending">{sortDescending ? 'Descending' : 'Ascending'}</label>
             <Switch
               onChange={(evt) => setSortDescending(!sortDescending)}
               color="default"
-              inputProps={{ "aria-label": "checkbox with default color" }}
+              labelid="toggle-descending"
             />
           </div>
         </div>
-
         <RepoList sortDescending={sortDescending} sortOption={sortOption} filter={filter} />
       </div>
     </div>
