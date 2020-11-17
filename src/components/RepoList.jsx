@@ -12,7 +12,6 @@ const RepoList = ({ filter, sortOption, sortDescending }) => {
         `https://api.github.com/orgs/catalyst/repos?page=${page}&per_page=12`);
       const data = await response.json();
       setRepos([...repos, ...data]);
-      console.log(repos);
     } catch (err) {
       console.error(err.message);
     }
@@ -69,14 +68,11 @@ const RepoList = ({ filter, sortOption, sortDescending }) => {
 
   const sortRepos = (repos) => {
     if (sortOption === "created-at") {
-      let sortedRepos = repos.sort(GetSortOrder("created_at"));
-      return sortedRepos;
+      return repos.sort(GetSortOrder("created_at"));
     } else if (sortOption === "updated-at") {
-      let sortedRepos = repos.sort(GetSortOrder("updated_at"));
-      return sortedRepos;
+      return repos.sort(GetSortOrder("updated_at"));
     } else {
-      let sortedRepos = repos.sort(GetSortOrder("name"));
-      return sortedRepos;
+      return repos.sort(GetSortOrder("name"));
     }
   };
 
@@ -86,7 +82,6 @@ const RepoList = ({ filter, sortOption, sortDescending }) => {
     let sortedRepos = sortRepos(filteredRepos);
     if (sortDescending) {
       sortedRepos = sortedRepos.reverse();
-      console.log(sortedRepos);
     }
     return sortedRepos.map((repo, index) => {
       return <Repo key={index} props={repo} />;
